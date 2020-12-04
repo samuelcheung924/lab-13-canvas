@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body onload="draw()">
+
+	<canvas id="sketch" width="300" height="300">
+
+	</canvas>
+
+	<script>
+		function draw() {
+		 	var sketch = document.getElementById('sketch');
+			var context = sketch.getContext("2d");
+
+			var userstring = prompt("So, like, how many circle do you want?");
+			var usernum = parseInt(userstring, 10);
+			/*var thismany = usernum * 2 - 1;*/
+
+			while (usernum > 12) {
+				var userstring = prompt("Please do not enter any number > 12.  Please reenter.");
+				var usernum = parseInt(userstring, 10);
+			}
+
+			for (i = 0; i < usernum; i++) {
+					context.fillStyle = "#927BE8"
+					// these are gonna be PURPLE!
+					context.beginPath();
+					context.arc(35, (i * 25 + 10), 10, 0, 2 * Math.PI, true);
+					context.closePath();
+					context.fill();
+						// CIRCLE: https://entertainmenttechnology.github.io/Wilson-MTEC1003/labs/12/canvas.html#13.0
+							// context.beginPath();
+							// context.arc(x, y, radius, start angle, end angle, clockwise);
+							// context.closePath();
+							// context.fill();
+				}
+			}
+
+			
+
+	</script>
+
+</body>
+</html>

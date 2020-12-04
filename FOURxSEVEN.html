@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body onload="draw()">
+<canvas id="sketch" width="300" height="300">
+</canvas>
+<script>
+
+function draw() {
+var sketch = document.getElementById('sketch');
+var context = sketch.getContext("2d");
+for (j = 0; j <= 6; j++) {
+for (i = 0; i <= 3; i++) {
+context.fillStyle = "#927BE8"
+// these are gonna be PURPLE!
+context.beginPath();
+context.arc((i * 25 + 10), (j * 30 + 10), 10, 0, 2 * Math.PI, true);
+context.closePath();
+context.fill();
+
+}
+
+}
+}
+
+</script>
+</body>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body onload="draw()">
+
+	<canvas id="sketch" width="300" height="300">
+
+	</canvas>
+
+	<script>
+		function draw() {
+		 	var sketch = document.getElementById('sketch');
+			var context = sketch.getContext("2d");
+
+			context.fillStyle = "#b30000";
+				// circle 1:
+			context.beginPath();
+			context.arc(200, 120, 100, 0, 2 * Math.PI, true);
+				// context.arc(x, y, radius, start angle, end angle, clockwise);
+			context.closePath();
+			context.fill();
+
+      			context.fillStyle = "#cc0000";
+        		// circle: 2
+     			context.beginPath();
+      			context.arc(200, 120, 84, 0, 2 * Math.PI, true);
+        		// context.arc(x, y, radius, start angle, end angle, clockwise);
+      			context.closePath();
+      			context.fill();
+
+			context.fillStyle = "#e60000";
+				// circle: 3
+			context.beginPath();
+			context.arc(200, 120, 68, 0, 2 * Math.PI, true);
+				// context.arc(x, y, radius, start angle, end angle, clockwise);
+			context.closePath();
+			context.fill();
+
+			context.fillStyle = "#ff0000";
+				// circle: 4
+			context.beginPath();
+			context.arc(200, 120, 52, 0, 2 * Math.PI, true);
+				// context.arc(x, y, radius, start angle, end angle, clockwise);
+			context.closePath();
+			context.fill();
+
+			context.fillStyle = "#ff1a1a";
+				// circle: 5
+			context.beginPath();
+			context.arc(200, 120, 36, 0, 2 * Math.PI, true);
+				// context.arc(x, y, radius, start angle, end angle, clockwise);
+			context.closePath();
+			context.fill();
+
+			context.fillStyle = "#ff3333";
+				// circle: 6
+			context.beginPath();
+			context.arc(200, 120, 20, 0, 2 * Math.PI, true);
+				// context.arc(x, y, radius, start angle, end angle, clockwise);
+			context.closePath();
+			context.fill();
+		}
+
+	</script>
+
+</body>
+</html>

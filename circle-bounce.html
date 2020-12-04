@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<style>
+  #sketch {
+    border: 1px solid #000;
+  }
+</style>
+
+<body>
+
+  <canvas id="sketch" width="480" height="720"> </canvas>
+  <script>
+
+//add a listener to your document to handle onload events… set it to run your main function
+document.addEventListener('DOMContentLoaded', main);
+
+//declare variables for canvas element, drawing instrument
+var sketch;
+var context;
+
+//this variable contains your circle x, y position,and radius
+var circle;
+
+//velocity
+var dx = 0.0;
+var dy = 1.0;
+
+var vx = 0.0;
+var vy = 0.0;
+
+var bfx = 0.975;
+var bfy = 0.975;
+
+//delay in ms before your animate function is called.
+var fps = 10;
+
+//keeps track of your animation
+var animation;
+var ai = 0;
+var maxai = 1000;
+
+function main() {
+  sketch = document.getElementById('sketch');
+  //get your sketch element;
+  context = sketch.getContext('2d');
+  //create your context;
+  circle = {'x': sketch.offsetWidth / 2, 'y': sketch.offsetHeight / 2, 'r': 25};
+
+  //create the circle object;
+  animation = setInterval(animate, fps);
+  //specify a function to be called repeatedly at a specific interval;
+}
+
+function animate() {
+  ai++;
+  if (ai >= maxai) clearInterval(animation);
+
+  vx = vx + dx;
+  vy = vy + dy;
+
+  if (Math.abs(vy) < Math.abs(dy)) vy = 0;
+  console.log('Animate[' + ai + ']: [' + circle.x + ';' + circle.y + '] ( ' + dx + ';' + dy + ' ) - ( ' + vx + ';' + vy + ' )');
+
+  //clear the screen
+  context.clearRect(0, 0, sketch.offsetWidth, sketch.offsetHeight);
+
+  //draw circle at current position of circle object
+  draw_circle(circle.x, circle.y, circle.r);
+
+  //move the circle 's position by adding velocity
+  circle.x = circle.x + vx;
+  circle.y = circle.y + vy;
+
+  if (circle.x + circle.r > sketch.width || circle.x - circle.r < 0) {
+    vx = -(bfx * vx);
+    console.log('Returning x: ( ' + dx + ';' + dy + ' )');
+  }
+
+  if (circle.y + circle.r > sketch.height || circle.y - circle.r < 0) {
+    vy = -(bfy * vy);
+    console.log('Returning y: ( ' + dx + ';' + dy + ' )');
+  }
+
+  // dont go beyond boundries
+  if (circle.y - circle.r < 0) circle.y = circle.r;
+  if (circle.y + circle.r > sketch.offsetHeight) circle.y = sketch.offsetHeight - circle.r;
+
+  if (circle.x - circle.r < 0) circle.x = circle.r;
+  if (circle.x + circle.r > sketch.offsetWidth) circle.x = sketch.offsetWidth - circle.r;
+
+  //stop condition
+  if ((vx == 0) && (vy == 0) && (circle.y + circle.r >= sketch.offsetHeight)) clearInterval(animation);
+}
+
+
+function draw_circle(x, y, r) {
+  context.beginPath();
+  context.arc(x, y, r, 0, 2 * Math.PI, true);
+  context.closePath();
+  context.fill();
+}
+
+</script>
+</body>
+
+</html>

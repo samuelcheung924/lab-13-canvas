@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body onload="draw()">
+
+	<canvas id="sketch" width="300" height="300">
+
+	</canvas>
+
+	<script>
+		function draw() {
+		 	var sketch = document.getElementById('sketch');
+			var context = sketch.getContext("2d");
+			context.fillStyle = "#ff0000";
+				// there, these are gonna be RED!
+
+
+      for (i = 0; i <= 4; i++) {
+
+          context.fillStyle = "	#FFC0CB"
+            // these are gonna be PURPLE!
+          context.beginPath();
+          context.arc((i * 25 + 10), 30, 10, 0, 2 * Math.PI, true);
+          context.closePath();
+          context.fill();
+
+
+					// context.fillRect(x, y, width, height);
+			}
+		}
+
+	</script>
+
+</body>
